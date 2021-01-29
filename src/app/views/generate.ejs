@@ -1,0 +1,18 @@
+<%- include('common/header') %>
+
+<% const numberOfCardsPerRow = 3; %>
+
+<% npcs.forEach((npc, npcIndex) => { %>
+    <% if (npcIndex % numberOfCardsPerRow === 0) { %>
+    <div class="row">
+    <% } %>
+
+        <div class="col s4"><%- include('components/npc-card', { npc: npc, uniqueId: npcIndex }) %></div>
+
+    <% if (npcIndex % numberOfCardsPerRow === (numberOfCardsPerRow - 1) || npcIndex === npcs.length - 1) { %>
+    </div>
+    <% } %>
+
+<% }) %>
+
+<%- include('common/footer') %>

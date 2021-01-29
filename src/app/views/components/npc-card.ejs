@@ -1,0 +1,90 @@
+<%
+    const attributes = npc.getAttributes();
+    const stats = {
+        hp: npc.calculateHP(),
+        mp: npc.calculateMana(),
+        sp: npc.calculateStamnia()
+    };
+%>
+
+<div class="card grey darken-4">
+    <div class="card-content white-text">
+        <div class="card-title">
+            <span class="chip grey darken-3 white-text">
+                    <img src="<%- npc.race.thumbnail %>" /> <%- npc.race.name %>
+                </span>
+            <span class="chip grey darken-3 white-text">
+                <img src="<%- npc.classe.thumbnail %>" /> <%- npc.classe.name %>
+            </span>
+            <div class="right">
+                <span class="chip grey darken-3 white-text">lv. <%- npc.level %></span>
+            </div>
+        </div>
+
+        <ul>
+            <li>
+                <b><%- npc.name %></b>
+                <% if (npc.sex === 'Male') { %>
+                    <span class="blue-text"><i class="tiny material-icons">male</i></span>
+                <% } else { %>
+                    <span class="pink-text"><i class="tiny material-icons">female</i></span>
+                <% } %>
+            </li>
+            <li><%- npc.age %> y.o. <%- npc.sex %> (<%- npc.gender %>) <%- npc.sexuality %></li>
+            <li><%- npc.getAlignment() %></li>
+        </ul>
+    </div>
+    <div class="card-tabs">
+        <ul class="tabs tabs-fixed-width grey darken-3">
+            <li class="tab">
+                <a class="white-text" href="#npc-attributes-<%- uniqueId %>">
+                    <i class="material-icons">person</i>
+                </a>
+            </li>
+            <li class="tab">
+                <a class="white-text" href="#npc-equipment-<%- uniqueId %>">
+                    <i class="material-icons">view_module</i>
+                </a>
+            <li class="tab">
+                <a class="white-text" href="#npc-professions-<%- uniqueId %>">
+                    <i class="material-icons">work</i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="card-content grey lighten-4">
+        <div id="npc-attributes-<%- uniqueId %>">
+            <div>
+                <span class="chip red white-text"><%- stats.hp %>/<%- stats.hp %> HP</span>
+                <span class="chip blue white-text"><%- stats.mp %>/<%- stats.mp %> MP</span>
+                <span class="chip green white-text"><%- stats.sp %>/<%- stats.sp %> SP</span>
+            </div>
+            <ul>
+                <li><span><b>Strength</b>: <%- attributes.strength %></span></li>
+                <li><span><b>Constitution</b>: <%- attributes.constitution %></span></li>
+                <li><span><b>Dexterity</b>: <%- attributes.dexterity %></span></li>
+                <li><span><b>Charisma</b>: <%- attributes.charisma %></span></li>
+                <li><span><b>Intelligence</b>: <%- attributes.intelligence %></span></li>
+                <li><span><b>Wisdom</b>: <%- attributes.wisdom %></span></li>
+            </ul>
+        </div>
+        <div id="npc-equipment-<%- uniqueId %>">
+            <ul>
+                <% npc.equipment.forEach((value) => { %>
+                    <li><b><%- value.slot %></b>: <%- value.name %></li>
+                <% }) %>
+            </ul>
+        </div>
+        <div id="npc-professions-<%- uniqueId %>" style="display: none;">
+            <% if (npc.professions.length > 0) { %>
+            <ul>
+                <% npc.professions.forEach((profession) => { %>
+                <li><%- profession.getRank() %> <%- profession.name %> lv. <%- profession.level %></li>
+                <% }); %>
+            </ul>
+            <% } else { %>
+            Has no ambitions in life.
+            <% } %>
+        </div>
+    </div>
+</div>
