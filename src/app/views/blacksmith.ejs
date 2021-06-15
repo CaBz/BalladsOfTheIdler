@@ -1,0 +1,19 @@
+<%- include('common/header') %>
+
+<% const numberOfCardsPerRow = 3; %>
+
+<% weapons.forEach((weapon, uniqueId) => { %>
+    <% if (uniqueId % numberOfCardsPerRow === 0) { %>
+    <div class="row">
+        <% } %>
+
+        <div class="col s4"><%- include('components/weapon-card', { weapon, uniqueId }) %></div>
+
+        <% if (uniqueId % numberOfCardsPerRow === (numberOfCardsPerRow - 1) || uniqueId === weapons.length - 1) { %>
+    </div>
+    <% } %>
+
+<% }) %>
+
+
+<%- include('common/footer') %>

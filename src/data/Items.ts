@@ -15,6 +15,12 @@ export enum ArmorItemSlot {
     Charm = 'Charm',
 }
 
+export enum WeaponItemSlot {
+    Sword = 'Sword',
+    Axe = 'Axe',
+    Mace = 'Mace',
+}
+
 export enum ItemPrefix {
     Wolf = 'Wolf', // Str
     Bear = 'Bear', // Con

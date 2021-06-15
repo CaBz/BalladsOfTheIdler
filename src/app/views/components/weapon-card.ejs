@@ -1,0 +1,21 @@
+<%
+const rarityForegroundColorMapping = {
+    'common': 'grey-text darken-3',
+    'uncommon': 'green-text darken-3',
+    'rare': 'blue-text darken-3',
+    'epic': 'purple-text darken-3',
+    'legendary': 'orange-text darken-3',
+    'mythic': 'light-blue-text lighten-1',
+    'unique': 'yellow-text'
+};
+%>
+
+<div class="card grey darken-4">
+    <div class="card-content white-text">
+        <div class="card-title">
+            <span class="chip grey darken-3 <%- rarityForegroundColorMapping[weapon.rarity] || 'white-text' %>">
+                <!-- img src="" / --> <%- weapon.name %>
+            </span>
+        </div>
+    </div>
+</div>

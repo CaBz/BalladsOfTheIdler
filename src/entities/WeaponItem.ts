@@ -1,14 +1,14 @@
 import { Item, ItemRarity } from './Item';
 import { Attributes } from './Attributes';
-import { ArmorItemSlot } from '../data/Items';
+import { ArmorItemSlot, WeaponItemSlot } from '../data/Items';
 
-export class ArmorItem extends Item {
+export class WeaponItem extends Item {
     constructor(
-        slot: ArmorItemSlot,
+        slot: WeaponItemSlot,
         name: string,
         rarity: ItemRarity,
         attributes: Attributes,
-        public readonly armor: number,
+        public readonly attack: number,
     ) {
         super(slot, name, rarity, attributes);
     }
